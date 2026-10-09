@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>הגר טלמון | ליווי ועיבוד לידה</title>
+  <meta name="description" content="ליווי ועיבוד לידה עם הגר טלמון, מלווה BOT. מרחב בטוח לספר את חוויית הלידה, להרגיש אותה ולהניח אותה בקצב שלך.">
+  <meta name="theme-color" content="#fffaf6">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&family=Frank+Ruhl+Libre:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="mark" viewBox="0 0 40 40">
+      <circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-width="1"/>
+      <circle cx="20" cy="20" r="11" fill="none" stroke="currentColor" stroke-width="1" opacity=".55"/>
+      <circle cx="20" cy="20" r="3.5" fill="currentColor"/>
+    </symbol>
+  </svg>
+
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a href="#home" class="brand">
+        <svg class="brand-mark" aria-hidden="true"><use href="#mark"/></svg>
+        <span class="brand-text">
+          <span class="brand-name">הגר טלמון</span>
+          <span class="brand-tag">עובדת סוציאלית MSW</span>
+        </span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="פתיחת תפריט" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span>
+      </button>
+
+      <nav class="main-nav" id="mainNav" aria-label="ניווט ראשי">
+        <a href="#home">ראשי</a>
+        <a href="#bot">מהו BOT</a>
+        <a href="#for-whom">למי זה מתאים</a>
+        <a href="#about">נעים להכיר</a>
+        <a href="#process">התהליך</a>
+        <a href="faq.html">שאלות נפוצות</a>
+        <a href="#contact" class="nav-cta">יצירת קשר</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="panel hero" id="home">
+      <div class="container split">
+        <div class="hero-text reveal">
+          <p class="eyebrow">ליווי ועיבוד לידה | מלווה BOT</p>
+          <h1>מרחב <em>בטוח</em><br>לעיבוד חוויית הלידה</h1>
+          <p class="lead">גם כשהכול הסתיים בשלום, הלידה יכולה להישאר בגוף ובנפש. כאן יש מקום לספר אותה, להרגיש אותה ולהניח אותה בקצב שלך.</p>
+          <div class="actions">
+            <a href="#contact" class="btn btn-primary">ליצירת קשר</a>
+            <a href="#bot" class="btn btn-link">מהו BOT <span aria-hidden="true">←</span></a>
+          </div>
+        </div>
+        <figure class="frame frame-hero reveal">
+          <img src="images/cover.jpg" alt="כורסה רכה ושולחן עץ עם צמח, על רקע ורוד עדין">
+        </figure>
+      </div>
+      <a href="#bot" class="scroll-hint" aria-label="גלילה לחלק הבא"><span></span></a>
+    </section>
+
+    <section class="panel bg-blush" id="bot">
+      <div class="container">
+        <div class="section-head center">
+          <p class="eyebrow reveal">מהו BOT</p>
+          <h2 class="reveal">הלידה היא המעבר הראשון שלנו,<br>והגוף זוכר אותה</h2>
+          <p class="lead reveal">BOT (Birth Oriented Thinking) הוא תחום מקצועי שפועל בישראל מאז 2012. הוא עוסק בתקשורת רגישה סביב היריון ולידה, ובצד הרגשי שעולה בתקופה הזאת.</p>
+          <p class="reveal">זה ליווי ולא טיפול. אני לא מגיעה עם תשובות מוכנות. אני לצידך כשאת מחפשת את התשובות שלך, ועוזרת לך לקחת איתך את מה שגילית.</p>
+        </div>
+
+        <ul class="pillars">
+          <li class="reveal">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32"><path d="M3 16c3.5 0 3.5-6 7-6s3.5 12 7 12 3.5-12 7-12 3.5 6 5 6"/></svg>
+            </span>
+            <h3>הקשבה לגוף</h3>
+            <p>מילים לא תמיד מספיקות. לומדים להקשיב לתחושות, לנשימה ולקצב, בלי להיבהל מהן.</p>
+          </li>
+          <li class="reveal">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32"><path d="M16 28V14"/><path d="M16 17c0-5 3.5-8.5 9-8.5 0 5.5-3.5 8.5-9 8.5z"/><path d="M16 21c0-4-3-7-7.5-7 0 4.5 3 7 7.5 7z"/></svg>
+            </span>
+            <h3>בקצב שלך</h3>
+            <p>צעדים קטנים ומוחזקים. קודם בונים ביטחון, ורק אז נוגעים במה שכואב.</p>
+          </li>
+          <li class="reveal">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="5"/></svg>
+            </span>
+            <h3>בלי שיפוטיות</h3>
+            <p>לכל תחושה יש מקום: עצב, כעס, בלבול או הקלה. אין דרך נכונה להרגיש.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="panel" id="for-whom">
+      <div class="container">
+        <div class="section-head center">
+          <p class="eyebrow reveal">למי זה מתאים</p>
+          <h2 class="reveal">אולי תזהי את עצמך כאן</h2>
+        </div>
+        <div class="columns">
+          <div class="column reveal">
+            <h3>לידה שכבר הייתה</h3>
+            <ul class="list">
+              <li>לידה שלא התרחשה כפי שדמיינת, גם אם היא נראית "בסדר" מבחוץ</li>
+              <li>לידה קשה, ניתוח קיסרי או לידת חירום</li>
+              <li>תחושת חוסר אונים, בדידות או אובדן שליטה שנשארו איתך</li>
+              <li>הצפה, פלאשבקים או ריחוק אחרי הלידה</li>
+              <li>קושי בהנקה והתחושה שמשהו אבד</li>
+              <li>הפלה, לידה שקטה או אובדן הריון</li>
+            </ul>
+          </div>
+          <div class="column reveal">
+            <h3>לידה שמגיעה</h3>
+            <ul class="list">
+              <li>לחץ וחרדה בהיריון</li>
+              <li>פחד מלידה נוספת אחרי חוויה קשה</li>
+              <li>חשש מניתוח קיסרי, מהפלה או מבדיקה מאתגרת</li>
+              <li>היריון אחרי אובדן</li>
+              <li>טראומה מהעבר שעולה לקראת הלידה</li>
+              <li>ליווי בטיפולי פוריות, בהיריון ובהורות הראשונה</li>
+            </ul>
+          </div>
+        </div>
+        <p class="note center reveal">מתאים לנשים ולזוגות, וגם לחוויות שהתרחשו לפני שנים.</p>
+      </div>
+    </section>
+
+    <section class="panel bg-sage" id="about">
+      <div class="container split split-reverse">
+        <figure class="frame frame-portrait reveal">
+          <img src="images/profile.jpg" alt="הגר טלמון">
+        </figure>
+        <div class="reveal">
+          <p class="eyebrow">נעים להכיר</p>
+          <h2>שלום, אני הגר טלמון</h2>
+          <p class="credentials">עובדת סוציאלית MSW<br>מלווה BOT</p>
+          <p class="lead">אני מאמינה שכל אדם ראוי להיות נראה, נשמע ומובן – ושמהמקום הזה מתחילה צמיחה.</p>
+          <p>במשך שנים אני מלווה נשים, גברים וזוגות בצמתים הרגישים של החיים: לפני לידה, אחריה, ובמפגש מחדש עם הלידה שהם עצמם עברו. ראיתי שוב ושוב כמה עמוק החוויה הזו נרשמת בגוף, וכמה שקט יכול להגיע כשנותנים לה מקום.</p>
+          <p>תפקידי הוא להציע מרחב בטוח, הדרכה וכלים, כדי שתוכלו להתחבר לעצמכם, לאחרים ולעולם שסביבכם.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="offer">
+      <div class="container">
+        <div class="section-head center">
+          <p class="eyebrow reveal">מה אני מציעה</p>
+          <h2 class="reveal">שלוש דרכים לעבוד יחד</h2>
+        </div>
+        <ul class="pillars">
+          <li class="reveal">
+            <span class="step-num">1</span>
+            <h3>עיבוד ראשוני</h3>
+            <p>שיחה קצרה, סמוך לאירוע. לפעמים אחרי לידה, הפלה או בדיקה קשה. זו עזרה ראשונה רגשית: להבין מה קרה, לסדר את הסיפור ולהכניס אותו למילים.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-num">2</span>
+            <h3>עיבוד ממוקד</h3>
+            <p>כמה פגישות סביב אירוע שממשיך להפריע גם אחרי זמן, כמו תחושת כישלון, אשמה, אובדן או חוסר אונים.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-num">3</span>
+            <h3>הכנה ללידה הבאה</h3>
+            <p>עבודה על חוויה קודמת כדי להגיע בבטחה לאתגר הקרוב. מזהות טריגרים, מוצאות משאבים ובונות כלים מעשיים.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="panel bg-blush" id="process">
+      <div class="container">
+        <div class="section-head center">
+          <p class="eyebrow reveal">איך נראה התהליך</p>
+          <h2 class="reveal">בקצב שנכון לך</h2>
+          <p class="reveal">הקצב נקבע לפי מה שנכון לך. את לא חייבת לספר יותר ממה שאת רוצה.</p>
+        </div>
+        <ol class="steps">
+          <li class="reveal">
+            <span class="step-num">1</span>
+            <h3>היכרות</h3>
+            <p>שיחה קצרה ולא מחייבת, שבה בודקות מה הביא אותך ואם הליווי מתאים.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-num">2</span>
+            <h3>ביטחון</h3>
+            <p>מוצאות יחד דרכים להרגיע את הגוף ולחזור להווה, לפני שנוגעים בסיפור.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-num">3</span>
+            <h3>הסיפור</h3>
+            <p>מספרות את הלידה לפי הסדר, ממלאות פערים ונותנות מילים לתחושות.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-num">4</span>
+            <h3>משמעות</h3>
+            <p>בודקות מה השתנה, מה עוד מחכה, ומה את לוקחת איתך.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="panel bg-deep" id="words">
+      <div class="container narrow center">
+        <p class="eyebrow reveal">מילים מהקליניקה</p>
+        <span class="quote-mark reveal" aria-hidden="true">”</span>
+        <div class="quotes reveal" id="quotes" aria-live="polite">
+          <blockquote class="quote is-active">
+            <p>שנים סחבתי את הלידה הראשונה שלי בלי להבין למה היא עדיין כואבת. בפעם הראשונה הרגשתי שמישהי באמת מקשיבה – לי ולגוף שלי.</p>
+            <cite>ש׳, אמא לשניים</cite>
+          </blockquote>
+          <blockquote class="quote">
+            <p>הגעתי בגלל חרדה לקראת הלידה השנייה. יצאתי עם שקט שלא הכרתי, והגעתי ללידה מחוברת ונוכחת.</p>
+            <cite>נ׳, בהיריון שני</cite>
+          </blockquote>
+          <blockquote class="quote">
+            <p>לא האמנתי שהלידה שלי עצמי קשורה למה שקורה לי היום. הטיפול פתח לי דלת להבין את עצמי אחרת.</p>
+            <cite>ד׳, בן 38</cite>
+          </blockquote>
+        </div>
+        <div class="quote-dots" id="quoteDots" role="tablist" aria-label="בחירת המלצה"></div>
+      </div>
+    </section>
+
+    <section class="panel bg-blush contact" id="contact">
+      <div class="container split contact-split">
+        <div class="reveal">
+          <p class="eyebrow">יצירת קשר</p>
+          <h2>אשמח להכיר אותך</h2>
+          <p class="lead">הצעד הראשון הוא שיחה קצרה ולא מחייבת. כל מה שנאמר נשאר בסודיות.</p>
+          <ul class="contact-list">
+            <li><span>טלפון</span><a href="tel:+972500000000" dir="ltr">050-000-0000</a></li>
+            <li><span>אימייל</span><a href="mailto:hello@example.com">hello@example.com</a></li>
+            <li><span>וואטסאפ</span><a href="https://wa.me/972500000000" target="_blank" rel="noopener">שליחת הודעה</a></li>
+            <li><span>מיקום</span>קליניקה פרטית ומפגשים באונליין</li>
+          </ul>
+        </div>
+
+        <form class="contact-form reveal" id="contactForm" novalidate>
+          <p class="form-title">השאירו פרטים ואחזור אליכם</p>
+          <label>
+            שם
+            <input type="text" name="name" required autocomplete="name">
+          </label>
+          <label>
+            טלפון
+            <input type="tel" name="phone" required autocomplete="tel" dir="ltr">
+          </label>
+          <label>
+            <span>כמה מילים <small>(לא חובה)</small></span>
+            <textarea name="message" rows="3"></textarea>
+          </label>
+          <button type="submit" class="btn btn-primary">שליחה</button>
+          <p class="form-status" id="formStatus" role="status"></p>
+        </form>
+      </div>
+
+      <footer class="site-footer">
+        <svg class="footer-mark" aria-hidden="true"><use href="#mark"/></svg>
+        <p>© <span id="year"></span> הגר טלמון · ליווי ועיבוד לידה</p>
+        <p class="disclaimer">ליווי ועיבוד לידה אינם תחליף לטיפול רפואי. אם את מרגישה דיכאון עמוק או מחשבות על פגיעה בעצמך או בתינוק, פני מיד לרופא/ה או לקו הסיוע של ער״ן בטלפון <a href="tel:1201">1201</a>, שפועל 24 שעות ביממה.</p>
+      </footer>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

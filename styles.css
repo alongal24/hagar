@@ -266,7 +266,7 @@ p { margin: 0 0 1em; }
   border: 0;
   transform: none;
 }
-.frame-hero img { aspect-ratio: 8 / 7; height: auto; }
+.frame-hero img { aspect-ratio: 1500 / 1049; height: auto; object-position: center; }
 
 .frame-portrait { aspect-ratio: auto; max-width: 440px; padding: 36px 48px 36px 0; }
 .frame-portrait::before {

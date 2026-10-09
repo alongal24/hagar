@@ -257,7 +257,7 @@ p { margin: 0 0 1em; }
 }
 .frame-hero {
   aspect-ratio: auto;
-  max-width: 820px;
+  max-width: 560px;
   padding: 0;
   background: none;
 }
@@ -340,7 +340,7 @@ p { margin: 0 0 1em; }
   pointer-events: none;
 }
 .hero .container { position: relative; }
-.hero .split { grid-template-columns: .68fr 1.32fr; gap: 3rem; }
+.hero .split { grid-template-columns: .95fr 1fr; gap: 5rem; }
 .hero .lead { max-width: 30em; }
 
 .scroll-hint {

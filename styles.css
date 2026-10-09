@@ -259,7 +259,9 @@ p { margin: 0 0 1em; }
   aspect-ratio: auto;
   max-width: 560px;
   padding: 0;
+  margin-left: -4rem;
   background: none;
+  justify-self: left;
 }
 .frame-hero::before { display: none; }
 .frame-hero img {
@@ -340,7 +342,7 @@ p { margin: 0 0 1em; }
   pointer-events: none;
 }
 .hero .container { position: relative; }
-.hero .split { grid-template-columns: .95fr 1fr; gap: 5rem; }
+.hero .split { grid-template-columns: 1.15fr .85fr; gap: 5rem; }
 .hero .lead { max-width: 30em; }
 
 .scroll-hint {
@@ -691,7 +693,7 @@ p { margin: 0 0 1em; }
   .split, .split-reverse, .hero .split { grid-template-columns: 1fr; gap: 3.5rem; }
   .split-reverse .frame { order: -1; }
   .frame { max-width: 400px; }
-  .frame-hero { max-width: 100%; padding: 0; }
+  .frame-hero { max-width: 100%; margin-left: 0; padding: 0; justify-self: center; }
   .frame-hero::before { display: none; }
   .frame-portrait { padding: 20px 24px 20px 0; }
   .frame-portrait::before { left: 16px; }

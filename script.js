@@ -35,6 +35,8 @@
   // Section-by-section paging on desktop; phones keep native scrolling with CSS snap.
   const pagingQuery = window.matchMedia("(min-width: 961px) and (min-height: 560px) and (prefers-reduced-motion: no-preference)");
   const root = document.documentElement;
+  const motionStopped = () => root.classList.contains("a11y-motion");
+  const pagingOn = () => pagingQuery.matches && !motionStopped();
   const panels = [...sections];
   let animating = false;
   let wheelQuietTimer;
@@ -96,7 +98,7 @@
   let wheelSum = 0;
 
   const onWheel = (e) => {
-    if (panels.length < 2 || !pagingQuery.matches || e.ctrlKey || Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
+    if (panels.length < 2 || !pagingOn() || e.ctrlKey || Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
     if (animating || wheelLocked) {
       e.preventDefault();
     } else if (stepTarget(Math.sign(e.deltaY)) !== null) {
@@ -120,7 +122,7 @@
 
   window.addEventListener("keydown", (e) => {
     const el = e.target instanceof Element ? e.target : null;
-    if (panels.length < 2 || !pagingQuery.matches || el?.closest("input, textarea, select")) return;
+    if (panels.length < 2 || !pagingOn() || el?.closest("input, textarea, select, .a11y")) return;
     if (e.key === " " && el?.closest("button, a")) return;
     const down = ["PageDown", "ArrowDown", " "].includes(e.key) && !e.shiftKey;
     const up = ["PageUp", "ArrowUp"].includes(e.key) || (e.key === " " && e.shiftKey);
@@ -131,7 +133,7 @@
 
   document.addEventListener("click", (e) => {
     const link = e.target.closest('a[href^="#"]');
-    if (!link || !pagingQuery.matches) return;
+    if (!link || link.classList.contains("skip-link") || !pagingOn()) return;
     const target = document.querySelector(link.getAttribute("href"));
     if (!target) return;
     e.preventDefault();
@@ -140,8 +142,9 @@
   });
 
   if (panels.length > 1) {
-    const syncPaging = () => root.classList.toggle("is-paged", pagingQuery.matches);
+    const syncPaging = () => root.classList.toggle("is-paged", pagingOn());
     pagingQuery.addEventListener("change", syncPaging);
+    document.addEventListener("a11ychange", syncPaging);
     syncPaging();
   }
 
@@ -166,9 +169,10 @@
       quotes.forEach((q, n) => q.classList.toggle("is-active", n === current));
       dotsWrap.querySelectorAll("button").forEach((b, n) => b.setAttribute("aria-selected", String(n === current)));
     };
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const startRotation = () => {
       clearInterval(timer);
-      timer = setInterval(() => showQuote(current + 1), 7000);
+      if (!reducedMotion.matches && !motionStopped()) timer = setInterval(() => showQuote(current + 1), 7000);
     };
 
     quotes.forEach((_, i) => {
@@ -180,7 +184,8 @@
       dotsWrap.appendChild(b);
     });
     showQuote(0);
-    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) startRotation();
+    startRotation();
+    document.addEventListener("a11ychange", startRotation);
   }
 
   document.querySelectorAll(".faq-q").forEach((button) => {

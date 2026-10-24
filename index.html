@@ -10,8 +10,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&family=Frank+Ruhl+Libre:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script src="a11y.js"></script>
 </head>
 <body>
+
+  <a href="#main" class="skip-link">דילוג לתוכן הראשי</a>
 
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <symbol id="mark" viewBox="0 0 40 40">
@@ -47,7 +50,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main" tabindex="-1">
 
     <section class="panel hero" id="home">
       <div class="container split">
@@ -113,14 +116,14 @@
         <div class="reveal">
           <p class="eyebrow">נעים להכיר</p>
           <h2>שלום, אני הגר טלמון</h2>
-          <p class="credentials">עובדת סוציאלית MSW<br>מלווה BOT</p>
+          <p class="credentials">עובדת סוציאלית MSW<br>מלווה בגישת B.O.T</p>
           <p class="lead">אני מאמינה שכל אדם ראוי להיות נראה, נשמע ומובן – ושמהמקום הזה מתחילה צמיחה.</p>
-          <p>במשך שנים אני מלווה נשים, גברים וזוגות בצמתים הרגישים של החיים: לפני לידה, אחריה, ובמפגש מחדש עם הלידה שהם עצמם עברו. ראיתי שוב ושוב כמה עמוק החוויה הזו נרשמת בגוף, וכמה שקט יכול להגיע כשנותנים לה מקום.</p>
-          <p>תפקידי הוא להציע מרחב בטוח, הדרכה וכלים, כדי שתוכלו להתחבר לעצמכם, לאחרים ולעולם שסביבכם.</p>
+          <p>במשך שנים עבדתי עם צעירות ואימהות, וראיתי פעם אחר פעם עד כמה המפגש הבינאישי הקרוב והמאפשר יכול ליצור תנועה.</p>
+          <p>תפקידי הוא להציע מרחב בטוח וקשוב, הדרכה וכלים, כדי שתוכלו להתחבר לחוויה הפנימית שלכם ולצמוח מתוכה.</p>
           <h3 class="about-sub">השכלה ורקע מקצועי</h3>
           <ul class="list">
-            <li>תואר ראשון</li>
-            <li>תואר שני</li>
+            <li>תואר ראשון בעבודה סוציאלית</li>
+            <li>תואר שני בעבודה סוציאלית</li>
             <li>הכשרת בסיס B.O.T</li>
           </ul>
           <p class="about-details">אורך התהליך יותאם לצורך העולה מכל אישה או זוג.<br>הקליניקה ממוקמת בדרום תל אביב, או במפגשים אונליין.</p>
@@ -243,7 +246,7 @@
 
       <footer class="site-footer">
         <svg class="footer-mark" aria-hidden="true"><use href="#mark"/></svg>
-        <p>© <span id="year"></span> הגר טלמון · ליווי ועיבוד לידה</p>
+        <p class="footer-links">© <span id="year"></span> הגר טלמון · ליווי ועיבוד לידה · <a href="accessibility.html">הצהרת נגישות</a></p>
         <p class="disclaimer">ליווי ועיבוד לידה אינם תחליף לטיפול רפואי. אם את מרגישה דיכאון עמוק או מחשבות על פגיעה בעצמך או בתינוק, פני מיד לרופא/ה או לקו הסיוע של ער״ן בטלפון <a href="tel:1201">1201</a>, שפועל 24 שעות ביממה.</p>
       </footer>
     </section>

@@ -344,6 +344,8 @@ p { margin: 0 0 1em; }
 .hero .container { position: relative; }
 .hero .split { grid-template-columns: 1.15fr .85fr; gap: 5rem; }
 .hero .lead { max-width: 30em; }
+.hero-intro { max-width: 34em; margin-top: 1.75rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+.hero-intro p:last-child { margin-bottom: 0; }
 
 .scroll-hint {
   position: absolute;

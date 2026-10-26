@@ -16,17 +16,12 @@
 
   const level = () => Math.min(Math.max(Math.round(Number(settings.scale) || 0), 0), SCALES.length - 1);
 
-  const NAV_BREAKPOINT = 960;
-  const syncNav = () => root.classList.toggle("nav-compact", window.innerWidth <= NAV_BREAKPOINT * SCALES[level()]);
-
   const apply = () => {
     const scale = SCALES[level()];
     root.style.fontSize = scale === 1 ? "" : `${scale * 100}%`;
     OPTIONS.forEach(([id]) => root.classList.toggle(`a11y-${id}`, Boolean(settings[id])));
-    syncNav();
   };
   apply();
-  window.addEventListener("resize", syncNav);
 
   const icon = (paths) => `<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">${paths}</svg>`;
 

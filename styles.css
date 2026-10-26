@@ -405,7 +405,8 @@ p { margin: 0 0 1em; }
 
 /* ---------- About ---------- */
 
-.about-sub { margin: 2rem 0 .5rem; font-size: 1.15rem; color: var(--sage-deep); }
+.hero .about-row { grid-template-columns: .9fr 1.1fr; margin-top: 5rem; }
+.about-sub { margin: 0 0 .5rem; font-size: 1.15rem; color: var(--sage-deep); }
 .about-details { margin: 1.5rem 0 0; color: var(--sage-deep); }
 
 /* ---------- Step numbers ---------- */
@@ -709,6 +710,7 @@ html.a11y-cursor, html.a11y-cursor * {
 
   .container { padding: 0 1.5rem; }
   .split, .hero .split { grid-template-columns: 1fr; gap: 3.5rem; }
+  .hero .about-row { margin-top: 3.5rem; }
   .frame { max-width: 400px; }
   .frame-hero { max-width: 100%; margin-left: 0; padding: 0; justify-self: center; }
   .frame-hero::before { display: none; }

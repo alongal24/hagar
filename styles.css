@@ -484,19 +484,8 @@ p { margin: 0 0 1em; }
 .about-sub { margin: 2rem 0 .5rem; font-size: 1.15rem; color: var(--sage-deep); }
 .about-details { margin: 1.5rem 0 0; color: var(--sage-deep); }
 
-/* ---------- Process ---------- */
+/* ---------- Step numbers ---------- */
 
-.steps {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.75rem 3rem;
-}
-.steps::before { display: none; }
-.steps li { position: relative; text-align: center; }
-.steps p { font-size: 1rem; margin: 0; }
 .step-num {
   position: relative;
   display: inline-grid;
@@ -512,8 +501,6 @@ p { margin: 0 0 1em; }
   color: var(--rose);
   transition: background .4s var(--ease), color .4s var(--ease);
 }
-.steps li:hover .step-num { background: var(--rose); color: #fff; border-color: var(--rose); }
-
 /* ---------- Quotes ---------- */
 
 .quote-mark {
@@ -676,8 +663,8 @@ p { margin: 0 0 1em; }
   transition: opacity 1s var(--ease), transform 1s var(--ease);
 }
 .reveal.is-visible { opacity: 1; transform: none; }
-.pillars .reveal:nth-child(2), .steps .reveal:nth-child(2), .columns .reveal:nth-child(2) { transition-delay: .15s; }
-.pillars .reveal:nth-child(3), .steps .reveal:nth-child(3) { transition-delay: .3s; }
+.pillars .reveal:nth-child(2), .columns .reveal:nth-child(2) { transition-delay: .15s; }
+.pillars .reveal:nth-child(3) { transition-delay: .3s; }
 .pillars li.reveal.is-visible:hover { transform: translateY(-4px); }
 
 /* ---------- Accessibility menu ---------- */
@@ -919,9 +906,7 @@ html.nav-compact .main-nav .nav-cta { margin-top: 1.25rem; text-align: center; b
   .frame-portrait { padding: 20px 24px 20px 0; }
   .frame-portrait::before { left: 16px; }
 
-  .pillars, .steps, .columns { grid-template-columns: 1fr; gap: 1.25rem; }
-  .steps { gap: 2.5rem; }
-  .steps::before { display: none; }
+  .pillars, .columns { grid-template-columns: 1fr; gap: 1.25rem; }
   .column { padding: 2rem 1.5rem 1.5rem; }
   .contact-form { padding: 2rem 1.5rem; }
 

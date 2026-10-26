@@ -501,51 +501,6 @@ p { margin: 0 0 1em; }
   color: var(--rose);
   transition: background .4s var(--ease), color .4s var(--ease);
 }
-/* ---------- Quotes ---------- */
-
-.quote-mark {
-  display: block;
-  font-family: var(--font-head);
-  font-size: 7rem;
-  line-height: .6;
-  height: 3rem;
-  color: var(--peach);
-  opacity: .8;
-  margin-top: 1rem;
-}
-.quotes { display: grid; }
-.quote {
-  grid-area: 1 / 1;
-  margin: 0;
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity .9s var(--ease), transform .9s var(--ease);
-  pointer-events: none;
-}
-.quote.is-active { opacity: 1; transform: none; pointer-events: auto; }
-.quote p {
-  font-family: var(--font-head);
-  font-size: clamp(1.4rem, 2.7vw, 2rem);
-  line-height: 1.6;
-  color: #fff;
-  font-weight: 300;
-  margin-bottom: 1.5rem;
-}
-.quote cite { font-style: normal; color: var(--sage); font-size: 1rem; }
-
-.quote-dots { display: flex; justify-content: center; gap: 10px; margin-top: 2.75rem; }
-.quote-dots button {
-  width: 28px;
-  height: 2px;
-  padding: 0;
-  border: 0;
-  background: #fff;
-  opacity: .3;
-  cursor: pointer;
-  transition: opacity .4s var(--ease), background .4s var(--ease), width .4s var(--ease);
-}
-.quote-dots button[aria-selected="true"] { opacity: 1; background: var(--peach); width: 44px; }
-
 /* ---------- Contact ---------- */
 
 .contact { padding-bottom: 0; }
@@ -821,8 +776,7 @@ html.a11y-contrast {
   --line: rgba(0, 0, 0, .55);
 }
 html.a11y-contrast .site-header { background: #fff; box-shadow: 0 1px 0 #000; }
-html.a11y-contrast .bg-deep,
-html.a11y-contrast .bg-deep .quote cite { color: #fff; }
+html.a11y-contrast .bg-deep { color: #fff; }
 html.a11y-contrast .column,
 html.a11y-contrast .pillars li,
 html.a11y-contrast .credentials,

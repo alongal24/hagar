@@ -158,36 +158,6 @@
   }, { threshold: 0.15 });
   document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
 
-  const quotes = document.querySelectorAll(".quote");
-  const dotsWrap = document.getElementById("quoteDots");
-  if (quotes.length && dotsWrap) {
-    let current = 0;
-    let timer;
-
-    const showQuote = (i) => {
-      current = (i + quotes.length) % quotes.length;
-      quotes.forEach((q, n) => q.classList.toggle("is-active", n === current));
-      dotsWrap.querySelectorAll("button").forEach((b, n) => b.setAttribute("aria-selected", String(n === current)));
-    };
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const startRotation = () => {
-      clearInterval(timer);
-      if (!reducedMotion.matches && !motionStopped()) timer = setInterval(() => showQuote(current + 1), 7000);
-    };
-
-    quotes.forEach((_, i) => {
-      const b = document.createElement("button");
-      b.type = "button";
-      b.setAttribute("role", "tab");
-      b.setAttribute("aria-label", `המלצה ${i + 1}`);
-      b.addEventListener("click", () => { showQuote(i); startRotation(); });
-      dotsWrap.appendChild(b);
-    });
-    showQuote(0);
-    startRotation();
-    document.addEventListener("a11ychange", startRotation);
-  }
-
   document.querySelectorAll(".faq-q").forEach((button) => {
     button.addEventListener("click", () => {
       const item = button.closest(".faq-item");

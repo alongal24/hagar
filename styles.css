@@ -303,6 +303,15 @@ p { margin: 0 0 1em; }
 .hero .lead { max-width: 30em; }
 .hero-intro { max-width: 34em; }
 .hero-intro p:last-child { margin-bottom: 0; }
+.hero-highlight {
+  max-width: 34em;
+  margin-top: 2rem;
+  padding: 1.6rem 1.8rem;
+  background: var(--blush);
+  border-right: 3px solid var(--rose);
+  color: var(--ink);
+}
+.hero-highlight p:last-child { margin-bottom: 0; }
 
 .scroll-hint {
   position: absolute;
@@ -590,7 +599,8 @@ html.a11y-contrast {
 }
 html.a11y-contrast .site-header { background: #fff; box-shadow: 0 1px 0 #000; }
 html.a11y-contrast .bg-deep { color: #fff; }
-html.a11y-contrast .contact-form { border: 1px solid #000; }
+html.a11y-contrast .contact-form,
+html.a11y-contrast .hero-highlight { border: 1px solid #000; }
 
 html.a11y-grayscale body > :not(.a11y) { filter: grayscale(1); }
 
@@ -639,6 +649,7 @@ html.a11y-cursor, html.a11y-cursor * {
   .container { padding: 0 1.5rem; }
   .split, .hero .split { grid-template-columns: 1fr; gap: 3.5rem; }
   .hero .about-row { margin-top: 3.5rem; }
+  .hero-highlight { padding: 1.3rem 1.25rem; }
   .frame { max-width: 400px; }
   .frame-hero { max-width: 100%; margin-left: 0; padding: 0; justify-self: center; }
   .frame-hero::before { display: none; }

@@ -220,21 +220,23 @@ p { margin: 0 0 1em; }
   margin-left: -6rem;
   background: none;
   justify-self: left;
-  align-self: end;
+  align-self: stretch;
 }
 .frame-hero::before { display: none; }
 .frame-hero img {
-  aspect-ratio: auto;
-  height: auto;
-  object-fit: contain;
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
   background: transparent;
   -webkit-mask-image:
-    linear-gradient(to right, transparent, #000 8%, #000 92%, transparent),
-    linear-gradient(to bottom, transparent, #000 6%, #000 80%, transparent);
+    linear-gradient(to right, transparent, #000 6%, #000 94%, transparent),
+    linear-gradient(to bottom, #000 82%, transparent);
   -webkit-mask-composite: source-in;
   mask-image:
-    linear-gradient(to right, transparent, #000 8%, #000 92%, transparent),
-    linear-gradient(to bottom, transparent, #000 6%, #000 80%, transparent);
+    linear-gradient(to right, transparent, #000 6%, #000 94%, transparent),
+    linear-gradient(to bottom, #000 82%, transparent);
   mask-composite: intersect;
 }
 
@@ -662,6 +664,7 @@ html.a11y-cursor, html.a11y-cursor * {
   .hero-highlight { padding: 1.3rem 1.25rem; }
   .frame { max-width: 400px; }
   .frame-hero { width: 100%; max-width: 420px; margin-left: 0; padding: 0; justify-self: center; }
+  .frame-hero img { position: relative; height: auto; }
   .frame-hero::before { display: none; }
   .frame-portrait { padding: 20px 24px 20px 0; }
   .frame-portrait::before { left: 16px; }

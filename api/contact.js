@@ -65,10 +65,19 @@ export async function POST(request) {
     return json(403, { ok: false, error: "captcha" });
   }
 
+  const host = request.headers.get("x-forwarded-host") || request.headers.get("host") || "www.hagar-talmon.com";
+  const originHost = /^(www\.)?hagar-talmon\.com$/.test(host) ? host : "www.hagar-talmon.com";
+  const origin = "https://" + originHost;
+
   try {
     const sendResponse = await fetch("https://formsubmit.co/ajax/" + EMAIL, {
       method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Origin: origin,
+        Referer: origin + "/"
+      },
       body: JSON.stringify({
         _subject: "פנייה חדשה מהאתר",
         _template: "table",
@@ -82,7 +91,7 @@ export async function POST(request) {
     const queued = typeof data.message === "string" && /activ/i.test(data.message);
     const accepted = data.success === true || data.success === "true" || queued;
     if (!sendResponse.ok || !accepted) {
-      console.error("form submit rejected");
+      console.error("form submit rejected", typeof data.message === "string" ? data.message.slice(0, 180) : sendResponse.status);
       return json(502, { ok: false, error: "send" });
     }
   } catch (error) {

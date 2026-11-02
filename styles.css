@@ -276,7 +276,7 @@ p { margin: 0 0 1em; }
 }
 /* ---------- Hero ---------- */
 
-.hero { overflow: hidden; }
+.hero { overflow: clip; }
 .hero::before {
   content: "";
   position: absolute;
@@ -303,6 +303,7 @@ p { margin: 0 0 1em; }
   color: var(--ink);
 }
 .hero-highlight p:last-child { margin-bottom: 0; }
+.highlight-note { font-style: italic; color: var(--rose); }
 
 .scroll-hint {
   position: absolute;
@@ -631,24 +632,38 @@ html.a11y-cursor, html.a11y-cursor * {
 }
 
 @media (max-width: 960px) {
+  html:not(.page-doc):not(.a11y-motion) { scroll-snap-type: y mandatory; }
+  .hero-row h1,
+  .hero-row .frame-hero,
+  .about-row .frame-portrait,
+  .contact-split > *,
+  .site-footer {
+    scroll-snap-align: start;
+    scroll-margin-top: calc(var(--header-h) + 1rem);
+  }
+  .hero-row h1 { scroll-margin-top: calc(var(--header-h) + 1.75rem); }
+  .site-footer { scroll-snap-align: end; }
+
   .header-inner { padding: 0 1.25rem; }
 
   .panel { padding: 4.5rem 0; }
-  .hero { padding-top: calc(var(--header-h) + 2.5rem); }
+  .hero { padding-top: calc(var(--header-h) + 1.75rem); }
   .scroll-hint { display: none; }
 
   .container { padding: 0 1.5rem; }
   .split, .hero .split { grid-template-columns: 1fr; gap: 3.5rem; }
   .hero .hero-row { gap: 0; }
   .hero-row .hero-text { display: contents; }
-  .hero-row h1 { order: 1; }
+  .hero-row h1 { order: 1; font-size: 1.85rem; margin-bottom: .45em; }
   .hero-row .hero-intro { order: 2; }
-  .hero-row .frame-hero { order: 3; margin-top: 2rem; }
-  .hero-row .hero-highlight { order: 4; }
-  .hero .about-row { margin-top: 3.5rem; }
-  .hero-highlight { padding: 1.3rem 1.25rem; }
+  .hero-intro p { font-size: 1rem; line-height: 1.7; margin-bottom: .7em; }
+  .hero-row .frame-hero { order: 3; margin-top: 2.5rem; }
+  .hero-row .hero-highlight { order: 4; margin-top: 1rem; font-size: 1rem; line-height: 1.7; }
+  .hero .about-row { margin-top: 3.5rem; gap: 1.5rem; }
+  .hero-highlight { padding: 1.2rem 1.25rem; }
   .frame { max-width: 400px; }
-  .frame-hero { width: 100%; max-width: 420px; margin-left: 0; padding: 0; justify-self: center; }
+  .frame-hero { width: 100%; max-width: 200px; margin-left: 0; padding: 0; justify-self: center; }
+  .about-row .frame-portrait { max-width: 250px; }
   .frame-hero img { position: relative; height: auto; }
   .frame-hero::before { display: none; }
   .frame-portrait { padding: 20px 24px 20px 0; }

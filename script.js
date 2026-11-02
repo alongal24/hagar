@@ -140,6 +140,22 @@
         const error = new Error(data.error === "captcha" ? "captcha" : "send");
         throw error;
       }
+      const mail = await fetch("https://formsubmit.co/ajax/" + EMAIL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: "פנייה חדשה מהאתר",
+          _template: "table",
+          _captcha: "false",
+          name: name.value.trim().replace(/\s+/g, " "),
+          phone: normalizePhone(phone.value),
+          message: message.value.trim() || "—"
+        })
+      });
+      const mailData = await mail.json().catch(() => ({}));
+      const queued = typeof mailData.message === "string" && /activ/i.test(mailData.message);
+      const accepted = mailData.success === true || mailData.success === "true" || queued;
+      if (!mail.ok || !accepted) throw new Error("send");
       form.reset();
       status.classList.remove("is-error");
       status.textContent = "תודה! הפנייה נשלחה ואחזור אלייך בהקדם.";

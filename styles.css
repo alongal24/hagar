@@ -631,18 +631,6 @@ html.a11y-cursor, html.a11y-cursor * {
 }
 
 @media (max-width: 960px) {
-  html:not(.a11y-motion) { scroll-snap-type: y mandatory; }
-  .hero-row h1,
-  .hero-row .frame-hero,
-  .hero-row .hero-highlight,
-  .about-row > *,
-  .contact-split > *,
-  .site-footer {
-    scroll-snap-align: start;
-    scroll-margin-top: calc(var(--header-h) + 1.25rem);
-  }
-  .hero-row h1 { scroll-margin-top: calc(var(--header-h) + 2.5rem); }
-
   .header-inner { padding: 0 1.25rem; }
 
   .panel { padding: 4.5rem 0; }
@@ -674,7 +662,7 @@ html.a11y-cursor, html.a11y-cursor * {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html, html:not(.a11y-motion) { scroll-behavior: auto; scroll-snap-type: none; }
+  html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
   .reveal { opacity: 1; transform: none; }
 }

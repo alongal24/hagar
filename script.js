@@ -32,7 +32,7 @@
     }
     const data = new FormData(form);
     const body = `שם: ${data.get("name")}\nטלפון: ${data.get("phone")}\n\n${data.get("message") || ""}`;
-    window.location.href = `mailto:hello@example.com?subject=${encodeURIComponent("פנייה מהאתר")}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:hagar.stam@gmail.com?subject=${encodeURIComponent("פנייה מהאתר")}&body=${encodeURIComponent(body)}`;
     status.textContent = "תודה! אחזור אלייך בהקדם.";
     form.reset();
   });

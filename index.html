@@ -90,22 +90,45 @@
           </ul>
         </div>
 
-        <form class="contact-form reveal" id="contactForm" novalidate>
+        <form class="contact-form reveal" id="contactForm" action="https://formsubmit.co/hagar.stam@gmail.com" method="POST" accept-charset="UTF-8" novalidate>
           <p class="form-title">השאירו פרטים ואחזור אליכם</p>
+          <input type="hidden" name="_subject" value="פנייה חדשה מהאתר">
+          <input type="hidden" name="_template" value="table">
+          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <label>
             שם
-            <input type="text" name="name" required autocomplete="name">
+            <input type="text" name="name" required autocomplete="name" maxlength="60" aria-describedby="nameError">
+            <span class="field-error" id="nameError"></span>
           </label>
           <label>
             טלפון
-            <input type="tel" name="phone" required autocomplete="tel" dir="ltr">
+            <input type="tel" name="phone" required autocomplete="tel" inputmode="tel" dir="ltr" maxlength="20" aria-describedby="phoneError">
+            <span class="field-error" id="phoneError"></span>
           </label>
           <label>
             <span>כמה מילים <small>(לא חובה)</small></span>
-            <textarea name="message" rows="3"></textarea>
+            <textarea name="message" rows="3" maxlength="1000" aria-describedby="messageError"></textarea>
+            <span class="field-error" id="messageError"></span>
           </label>
+          <div class="captcha">
+            <div class="captcha-head">
+              <span class="captcha-label" id="captchaLabel">אימות</span>
+              <span class="captcha-actions">
+                <button type="button" id="captchaAudio">השמעה</button>
+                <button type="button" id="captchaRefresh">קוד חדש</button>
+              </span>
+            </div>
+            <div class="captcha-frame">
+              <canvas id="captchaCanvas" width="220" height="68" aria-labelledby="captchaLabel"></canvas>
+            </div>
+            <label>
+              הקלידו את התווים שבתמונה
+              <input type="text" id="captchaInput" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="8" aria-describedby="captchaError">
+              <span class="field-error" id="captchaError"></span>
+            </label>
+          </div>
           <button type="submit" class="btn btn-primary">שליחה</button>
-          <p class="form-status" id="formStatus" role="status"></p>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
         </form>
       </div>
 

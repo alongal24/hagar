@@ -83,9 +83,15 @@
           <p class="eyebrow">יצירת קשר</p>
           <h2>אשמח להכיר אותך</h2>
           <ul class="contact-list">
-            <li><span>טלפון</span><a href="tel:+972547954179" dir="ltr">054-795-4179</a></li>
+            <li><span>טלפון</span><a class="js-phone" dir="ltr" href="#contact">טלפון</a></li>
             <li><span>אימייל</span><a href="mailto:hagar.stam@gmail.com">hagar.stam@gmail.com</a></li>
-            <li><span>וואטסאפ</span><a href="https://wa.me/972547954179" target="_blank" rel="noopener">שליחת הודעה</a></li>
+            <li>
+              <span>וואטסאפ</span>
+              <a class="wa-link js-whatsapp" href="#contact" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.15 6.4 2.15 11.83c0 1.74.46 3.44 1.34 4.94L2 22l5.39-1.41a10.1 10.1 0 0 0 4.65 1.14h.01c5.46 0 9.89-4.4 9.89-9.83C21.94 6.4 17.5 2 12.04 2zm5.78 13.87c-.24.68-1.4 1.3-1.94 1.38-.5.08-1.12.11-1.81-.11-.42-.14-.95-.31-1.64-.6-2.88-1.24-4.76-4.14-4.9-4.33-.14-.19-1.16-1.54-1.16-2.94s.73-2.08 1-2.37c.24-.27.64-.4.86-.4h.62c.2 0 .46-.07.72.55.27.64.91 2.22.99 2.38.08.16.13.35.03.56-.1.22-.15.35-.3.54-.14.19-.31.42-.44.56-.14.14-.29.3-.12.58.16.27.73 1.2 1.57 1.95 1.08.96 1.99 1.26 2.27 1.4.28.14.44.12.6-.07.16-.19.7-.81.89-1.09.19-.27.38-.23.64-.14.26.08 1.66.78 1.94.92.28.14.47.21.54.33.07.12.07.68-.17 1.36z"/></svg>
+                לחצו לשליחה
+              </a>
+            </li>
             <li><span>מיקום</span>קליניקה פרטית ביד אליהו, תל אביב, ומפגשים בזום</li>
           </ul>
         </div>
@@ -94,6 +100,7 @@
           <p class="form-title">השאירו פרטים ואחזור אליכם</p>
           <input type="hidden" name="_subject" value="פנייה חדשה מהאתר">
           <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="">
           <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <label>
             שם
@@ -110,23 +117,6 @@
             <textarea name="message" rows="3" maxlength="1000" aria-describedby="messageError"></textarea>
             <span class="field-error" id="messageError"></span>
           </label>
-          <div class="captcha">
-            <div class="captcha-head">
-              <span class="captcha-label" id="captchaLabel">אימות</span>
-              <span class="captcha-actions">
-                <button type="button" id="captchaAudio">השמעה</button>
-                <button type="button" id="captchaRefresh">קוד חדש</button>
-              </span>
-            </div>
-            <div class="captcha-frame">
-              <canvas id="captchaCanvas" width="220" height="68" aria-labelledby="captchaLabel"></canvas>
-            </div>
-            <label>
-              הקלידו את התווים שבתמונה
-              <input type="text" id="captchaInput" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="8" aria-describedby="captchaError">
-              <span class="field-error" id="captchaError"></span>
-            </label>
-          </div>
           <button type="submit" class="btn btn-primary">שליחה</button>
           <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
         </form>

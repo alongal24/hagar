@@ -397,6 +397,33 @@ p { margin: 0 0 1em; }
 .contact-list a.wa-link svg { width: 16px; height: 16px; color: #1f7a4d; flex-shrink: 0; }
 .contact-list a.wa-link:hover svg { color: var(--rose); }
 
+.captcha { display: flex; flex-direction: column; gap: .45rem; }
+.captcha[hidden] { display: none !important; }
+.captcha-head { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
+.captcha-label { font-size: .95rem; color: var(--ink); }
+.captcha-actions { display: flex; gap: .9rem; }
+.captcha-actions button {
+  font: inherit;
+  font-size: .85rem;
+  color: var(--rose);
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.captcha-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  border: 1px solid var(--blush-deep);
+  border-radius: 12px;
+  padding: .35rem .5rem;
+}
+.captcha-frame canvas { display: block; width: 220px; height: 68px; user-select: none; }
+
 .contact-form {
   position: relative;
   background: #fff;

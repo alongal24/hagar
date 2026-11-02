@@ -100,7 +100,6 @@
           <p class="form-title">השאירו פרטים ואחזור אליכם</p>
           <input type="hidden" name="_subject" value="פנייה חדשה מהאתר">
           <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_next" value="">
           <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <label>
             שם
@@ -117,6 +116,23 @@
             <textarea name="message" rows="3" maxlength="1000" aria-describedby="messageError"></textarea>
             <span class="field-error" id="messageError"></span>
           </label>
+          <div class="captcha" id="captcha" hidden>
+            <div class="captcha-head">
+              <span class="captcha-label" id="captchaLabel">אימות</span>
+              <span class="captcha-actions">
+                <button type="button" id="captchaAudio">השמעה</button>
+                <button type="button" id="captchaRefresh">קוד חדש</button>
+              </span>
+            </div>
+            <div class="captcha-frame">
+              <canvas id="captchaCanvas" width="220" height="68" aria-labelledby="captchaLabel"></canvas>
+            </div>
+            <label>
+              הקלידו את התווים שבתמונה
+              <input type="text" id="captchaInput" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="8" aria-describedby="captchaError">
+              <span class="field-error" id="captchaError"></span>
+            </label>
+          </div>
           <button type="submit" class="btn btn-primary">שליחה</button>
           <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
         </form>

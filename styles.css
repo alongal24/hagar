@@ -214,9 +214,10 @@ p { margin: 0 0 1em; }
 }
 .frame-hero {
   aspect-ratio: auto;
-  max-width: 480px;
+  width: calc(100% + 6rem);
+  max-width: 580px;
   padding: 0;
-  margin-left: -4rem;
+  margin-left: -6rem;
   background: none;
   justify-self: left;
   align-self: end;
@@ -642,7 +643,7 @@ html.a11y-cursor, html.a11y-cursor * {
 /* ---------- Responsive ---------- */
 
 @media (max-width: 1279px) {
-  .frame-hero { padding: 0; }
+  .frame-hero { padding: 0; width: calc(100% + 2rem); margin-left: -2rem; }
   .frame-hero::before { display: none; }
   .frame-portrait { padding: 28px 36px 28px 0; }
   .frame-portrait::before { left: 22px; }
@@ -660,7 +661,7 @@ html.a11y-cursor, html.a11y-cursor * {
   .hero .about-row { margin-top: 3.5rem; }
   .hero-highlight { padding: 1.3rem 1.25rem; }
   .frame { max-width: 400px; }
-  .frame-hero { max-width: 100%; margin-left: 0; padding: 0; justify-self: center; }
+  .frame-hero { width: 100%; max-width: 420px; margin-left: 0; padding: 0; justify-self: center; }
   .frame-hero::before { display: none; }
   .frame-portrait { padding: 20px 24px 20px 0; }
   .frame-portrait::before { left: 16px; }

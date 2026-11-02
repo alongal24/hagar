@@ -1,8 +1,10 @@
 (() => {
   const header = document.getElementById("siteHeader");
 
-  const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 10);
+  const main = document.getElementById("main");
+  const onScroll = () => header.classList.toggle("is-scrolled", Math.max(window.scrollY, main ? main.scrollTop : 0) > 10);
   window.addEventListener("scroll", onScroll, { passive: true });
+  if (main) main.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
   const revealObserver = new IntersectionObserver((entries) => {

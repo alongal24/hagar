@@ -632,8 +632,17 @@ html.a11y-cursor, html.a11y-cursor * {
 }
 
 @media (max-width: 960px) {
-  html, body { overflow-x: visible; }
-  html:not(.page-doc):not(.a11y-motion) { scroll-snap-type: y mandatory; }
+  /* Touch snapping is unreliable on the root scroller, so the home page scrolls inside <main>. */
+  html:not(.page-doc),
+  html:not(.page-doc) body { height: 100%; overflow: hidden; }
+  html:not(.page-doc) main {
+    height: 100vh;
+    height: 100dvh;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+  }
+  html.a11y-motion main { scroll-snap-type: none; scroll-behavior: auto; }
   .hero-row h1,
   .hero-row .frame-hero,
   .about-row .frame-portrait,
@@ -678,7 +687,7 @@ html.a11y-cursor, html.a11y-cursor * {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+  html, main { scroll-behavior: auto !important; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
   .reveal { opacity: 1; transform: none; }
 }

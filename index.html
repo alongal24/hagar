@@ -96,7 +96,7 @@
           </ul>
         </div>
 
-        <form class="contact-form reveal" id="contactForm" action="https://formsubmit.co/hagar.stam@gmail.com" method="POST" accept-charset="UTF-8" novalidate>
+        <form class="contact-form reveal" id="contactForm" action="#contact" method="POST" accept-charset="UTF-8" novalidate>
           <p class="form-title">השאירו פרטים ואחזור אליכם</p>
           <input type="hidden" name="_subject" value="פנייה חדשה מהאתר">
           <input type="hidden" name="_template" value="table">
@@ -116,10 +116,8 @@
             <textarea name="message" rows="3" maxlength="1000" aria-describedby="messageError"></textarea>
             <span class="field-error" id="messageError"></span>
           </label>
-          <div class="captcha" id="captcha">
-            <div id="recaptcha"></div>
-            <span class="field-error" id="captchaError"></span>
-          </div>
+          <p class="recaptcha-note">הטופס מוגן באמצעות reCAPTCHA. חלים <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">מדיניות הפרטיות</a> ו<a href="https://policies.google.com/terms" target="_blank" rel="noopener">תנאי השימוש</a> של Google.</p>
+          <span class="field-error" id="captchaError"></span>
           <button type="submit" class="btn btn-primary">שליחה</button>
           <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
         </form>
@@ -135,6 +133,6 @@
   </main>
 
   <script src="script.js"></script>
-  <script src="https://www.google.com/recaptcha/api.js?hl=he&onload=onRecaptchaLoad&render=explicit" async defer></script>
+  <script src="https://www.google.com/recaptcha/api.js?hl=he&render=6Le8gA0uAAAAAAsqQazYLkG26uKJkdckzzgj4abd" async defer></script>
 </body>
 </html>

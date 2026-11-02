@@ -63,28 +63,22 @@
     history.replaceState(null, "", location.pathname + (query ? "?" + query : "") + location.hash);
   }
 
-  const RECAPTCHA_SITE_KEY = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
+  const RECAPTCHA_SITE_KEY = "6Le8gA0uAAAAAAsqQazYLkG26uKJkdckzzgj4abd";
   const captchaErrorEl = document.getElementById("captchaError");
-  let recaptchaId = null;
 
   const setCaptchaError = (message) => {
     if (captchaErrorEl) captchaErrorEl.textContent = message || "";
   };
 
-  window.onRecaptchaLoad = () => {
-    const box = document.getElementById("recaptcha");
-    if (!box || recaptchaId !== null || !window.grecaptcha) return;
-    recaptchaId = window.grecaptcha.render(box, {
-      sitekey: RECAPTCHA_SITE_KEY,
-      hl: "he",
-      callback: () => setCaptchaError("")
+  const recaptchaToken = () => new Promise((resolve, reject) => {
+    if (!window.grecaptcha) {
+      reject(new Error("recaptcha missing"));
+      return;
+    }
+    window.grecaptcha.ready(() => {
+      window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: "contact" }).then(resolve, reject);
     });
-  };
-
-  const captchaMessage = () => {
-    if (!window.grecaptcha || recaptchaId === null) return "האימות לא נטען. רעננו את העמוד.";
-    return window.grecaptcha.getResponse(recaptchaId) ? "" : "נא לאשר שאינך רובוט.";
-  };
+  });
 
   if (form) form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -95,17 +89,16 @@
     const nameError = validateName(name.value);
     const phoneError = validatePhone(phone.value);
     const messageError = validateMessage(message.value);
-    const captchaError = captchaMessage();
     setFieldError(name, nameError);
     setFieldError(phone, phoneError);
     setFieldError(message, messageError);
-    setCaptchaError(captchaError);
+    setCaptchaError("");
 
     const firstInvalid = [name, phone, message].find((field, index) => [nameError, phoneError, messageError][index]);
-    if (firstInvalid || captchaError) {
+    if (firstInvalid) {
       status.textContent = "יש לתקן את השדות המסומנים.";
       status.classList.add("is-error");
-      if (firstInvalid) firstInvalid.focus();
+      firstInvalid.focus();
       return;
     }
     if (honey && honey.value) {
@@ -118,30 +111,46 @@
     submitButton.disabled = true;
     status.classList.remove("is-error");
     status.textContent = "שולחים…";
+    let token = "";
     try {
-      const response = await fetch("https://formsubmit.co/ajax/" + EMAIL, {
+      token = await recaptchaToken();
+    } catch {
+      token = "";
+    }
+    if (!token) {
+      setCaptchaError("האימות לא נטען. רעננו את העמוד.");
+      status.classList.add("is-error");
+      status.textContent = "האימות לא נטען. רעננו את העמוד.";
+      submitButton.disabled = false;
+      return;
+    }
+    try {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
-          _subject: "פנייה חדשה מהאתר",
-          _template: "table",
-          _captcha: "false",
           name: name.value.trim().replace(/\s+/g, " "),
           phone: normalizePhone(phone.value),
-          message: message.value.trim() || "—"
+          message: message.value.trim(),
+          token
         })
       });
       const data = await response.json().catch(() => ({}));
-      const queued = typeof data.message === "string" && /activ/i.test(data.message);
-      const accepted = data.success === true || data.success === "true" || queued;
-      if (!response.ok || !accepted) throw new Error("send failed");
+      if (!response.ok || !data.ok) {
+        const error = new Error(data.error === "captcha" ? "captcha" : "send");
+        throw error;
+      }
       form.reset();
-      if (window.grecaptcha && recaptchaId !== null) window.grecaptcha.reset(recaptchaId);
       status.classList.remove("is-error");
       status.textContent = "תודה! הפנייה נשלחה ואחזור אלייך בהקדם.";
-    } catch {
+    } catch (error) {
       status.classList.add("is-error");
-      status.textContent = "השליחה לא הצליחה. אפשר להתקשר או לכתוב אל " + EMAIL + ".";
+      if (error && error.message === "captcha") {
+        setCaptchaError("האימות נכשל. נסו שוב, או התקשרו.");
+        status.textContent = "האימות נכשל. נסו שוב, או התקשרו.";
+      } else {
+        status.textContent = "השליחה לא הצליחה. אפשר להתקשר או לכתוב אל " + EMAIL + ".";
+      }
     } finally {
       submitButton.disabled = false;
     }

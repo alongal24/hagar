@@ -214,11 +214,12 @@ p { margin: 0 0 1em; }
 }
 .frame-hero {
   aspect-ratio: auto;
-  max-width: 560px;
+  max-width: 480px;
   padding: 0;
   margin-left: -4rem;
   background: none;
   justify-self: left;
+  align-self: end;
 }
 .frame-hero::before { display: none; }
 .frame-hero img {
@@ -227,12 +228,12 @@ p { margin: 0 0 1em; }
   object-fit: contain;
   background: transparent;
   -webkit-mask-image:
-    linear-gradient(to right, transparent, #000 7%, #000 93%, transparent),
-    linear-gradient(to bottom, transparent, #000 7%, #000 93%, transparent);
+    linear-gradient(to right, transparent, #000 8%, #000 92%, transparent),
+    linear-gradient(to bottom, transparent, #000 6%, #000 80%, transparent);
   -webkit-mask-composite: source-in;
   mask-image:
-    linear-gradient(to right, transparent, #000 7%, #000 93%, transparent),
-    linear-gradient(to bottom, transparent, #000 7%, #000 93%, transparent);
+    linear-gradient(to right, transparent, #000 8%, #000 92%, transparent),
+    linear-gradient(to bottom, transparent, #000 6%, #000 80%, transparent);
   mask-composite: intersect;
 }
 

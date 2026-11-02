@@ -116,22 +116,9 @@
             <textarea name="message" rows="3" maxlength="1000" aria-describedby="messageError"></textarea>
             <span class="field-error" id="messageError"></span>
           </label>
-          <div class="captcha" id="captcha" hidden>
-            <div class="captcha-head">
-              <span class="captcha-label" id="captchaLabel">אימות</span>
-              <span class="captcha-actions">
-                <button type="button" id="captchaAudio">השמעה</button>
-                <button type="button" id="captchaRefresh">קוד חדש</button>
-              </span>
-            </div>
-            <div class="captcha-frame">
-              <canvas id="captchaCanvas" width="220" height="68" aria-labelledby="captchaLabel"></canvas>
-            </div>
-            <label>
-              הקלידו את התווים שבתמונה
-              <input type="text" id="captchaInput" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="8" aria-describedby="captchaError">
-              <span class="field-error" id="captchaError"></span>
-            </label>
+          <div class="captcha" id="captcha">
+            <div id="recaptcha"></div>
+            <span class="field-error" id="captchaError"></span>
           </div>
           <button type="submit" class="btn btn-primary">שליחה</button>
           <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
@@ -148,5 +135,6 @@
   </main>
 
   <script src="script.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js?hl=he&onload=onRecaptchaLoad&render=explicit" async defer></script>
 </body>
 </html>

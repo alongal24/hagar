@@ -632,6 +632,7 @@ html.a11y-cursor, html.a11y-cursor * {
 }
 
 @media (max-width: 960px) {
+  html, body { overflow-x: visible; }
   html:not(.page-doc):not(.a11y-motion) { scroll-snap-type: y mandatory; }
   .hero-row h1,
   .hero-row .frame-hero,

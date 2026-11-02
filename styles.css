@@ -639,7 +639,6 @@ html.a11y-cursor, html.a11y-cursor * {
   .contact-split > *,
   .site-footer {
     scroll-snap-align: start;
-    scroll-snap-stop: always;
     scroll-margin-top: calc(var(--header-h) + 1.25rem);
   }
   .hero-row h1 { scroll-margin-top: calc(var(--header-h) + 2.5rem); }

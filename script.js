@@ -19,7 +19,15 @@
 
   const form = document.getElementById("contactForm");
   const status = document.getElementById("formStatus");
+  const statusText = document.getElementById("formStatusText");
   const EMAIL = "hagar.stam@gmail.com";
+
+  const setStatus = (message, kind) => {
+    if (!status) return;
+    status.classList.toggle("is-error", kind === "error");
+    status.classList.toggle("is-success", kind === "success");
+    if (statusText) statusText.textContent = message || "";
+  };
 
   const setFieldError = (input, message) => {
     const error = document.getElementById(input.getAttribute("aria-describedby"));
@@ -53,8 +61,7 @@
   const validateMessage = (value) => value.length > 1000 ? "ההודעה ארוכה מדי." : "";
 
   if (status && new URLSearchParams(location.search).get("sent") === "1") {
-    status.classList.remove("is-error");
-    status.textContent = "תודה! הפנייה נשלחה ואחזור אלייך בהקדם.";
+    setStatus("תודה! הפנייה נשלחה ואחזור אלייך בהקדם.", "success");
     const contact = document.getElementById("contact");
     if (contact) contact.scrollIntoView();
     const params = new URLSearchParams(location.search);
@@ -96,21 +103,18 @@
 
     const firstInvalid = [name, phone, message].find((field, index) => [nameError, phoneError, messageError][index]);
     if (firstInvalid) {
-      status.textContent = "יש לתקן את השדות המסומנים.";
-      status.classList.add("is-error");
+      setStatus("יש לתקן את השדות המסומנים.", "error");
       firstInvalid.focus();
       return;
     }
     if (honey && honey.value) {
-      status.textContent = "השליחה לא הצליחה. אפשר להתקשר או לכתוב אל " + EMAIL + ".";
-      status.classList.add("is-error");
+      setStatus("השליחה לא הצליחה. אפשר להתקשר או לכתוב אל " + EMAIL + ".", "error");
       return;
     }
 
     const submitButton = form.querySelector("[type=submit]");
     submitButton.disabled = true;
-    status.classList.remove("is-error");
-    status.textContent = "שולחים…";
+    setStatus("שולחים…");
     let token = "";
     try {
       token = await recaptchaToken();
@@ -119,8 +123,7 @@
     }
     if (!token) {
       setCaptchaError("האימות לא נטען. רעננו את העמוד.");
-      status.classList.add("is-error");
-      status.textContent = "האימות לא נטען. רעננו את העמוד.";
+      setStatus("האימות לא נטען. רעננו את העמוד.", "error");
       submitButton.disabled = false;
       return;
     }
@@ -157,15 +160,13 @@
       const accepted = mailData.success === true || mailData.success === "true" || queued;
       if (!mail.ok || !accepted) throw new Error("send");
       form.reset();
-      status.classList.remove("is-error");
-      status.textContent = "תודה! הפנייה נשלחה ואחזור אלייך בהקדם.";
+      setStatus("תודה! הפנייה נשלחה ואחזור אלייך בהקדם.", "success");
     } catch (error) {
-      status.classList.add("is-error");
       if (error && error.message === "captcha") {
         setCaptchaError("האימות נכשל. נסו שוב, או התקשרו.");
-        status.textContent = "האימות נכשל. נסו שוב, או התקשרו.";
+        setStatus("האימות נכשל. נסו שוב, או התקשרו.", "error");
       } else {
-        status.textContent = "השליחה לא הצליחה. אפשר להתקשר או לכתוב אל " + EMAIL + ".";
+        setStatus("השליחה לא הצליחה. אפשר להתקשר או לכתוב אל " + EMAIL + ".", "error");
       }
     } finally {
       submitButton.disabled = false;

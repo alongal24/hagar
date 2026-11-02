@@ -632,7 +632,7 @@ html.a11y-cursor, html.a11y-cursor * {
 
 @media (max-width: 960px) {
   html:not(.a11y-motion) { scroll-snap-type: y mandatory; }
-  .hero,
+  .hero-row h1,
   .hero-row .frame-hero,
   .hero-row .hero-highlight,
   .about-row > *,
@@ -642,7 +642,7 @@ html.a11y-cursor, html.a11y-cursor * {
     scroll-snap-stop: always;
     scroll-margin-top: calc(var(--header-h) + 1.25rem);
   }
-  .hero { scroll-margin-top: 0; }
+  .hero-row h1 { scroll-margin-top: calc(var(--header-h) + 2.5rem); }
 
   .header-inner { padding: 0 1.25rem; }
 

@@ -46,26 +46,34 @@
 
     <section class="panel hero" id="home">
       <div class="container split hero-row">
-        <div class="hero-text reveal">
-          <h1>לידה, הורות <em>ומה שביניהן</em></h1>
-          <div class="hero-intro">
+        <div class="hero-copy">
+          <h1 class="reveal">לידה, הורות<em>ומה שביניהן</em></h1>
+          <div class="hero-intro reveal">
             <p>אני הגר טלמון, עובדת סוציאלית MSW ומלווה בגישת B.O.T. אני מציעה ליווי רגשי לנשים וזוגות בהכנה רגשית לקראת לידה, בעיבוד חוויית לידה ובמעבר להורות.</p>
             <p>במשך שנים אני עובדת עם צעירות ואמהות ורואה פעם אחר פעם עד כמה המפגש הקרוב, הלב הפתוח והעיניים הטובות יכולים ליצור תנועה משמעותית.</p>
             <p>אני מאמינה שכל אדם ראוי להיות נראה, נשמע ומובן, ושמהמקום הזה מתחילה צמיחה. לכל אישה ולכל זוג מגיע מרחב בטוח ומכיל, שבו אפשר לעצור, לשתף, להקשיב ולהבין את מה שעובר עליהם בתקופה הייחודית הזו.</p>
           </div>
-          <div class="hero-highlight">
-            <p>הליווי מתאים למי שרוצה להתכונן ללידה, לעבד חוויות ורגשות שנותרו אחריה, להתמודד עם אתגרי תקופת ההורות הראשונית ולתת מקום לשאלות, לחששות ולשינויים שמביאה איתה האימהות.</p>
-            <p>במפגשים משולבים הקשבה רגישה, זיהוי כוחות ומשאבים ופיתוח דרכי התמודדות שיסייעו בחיזוק תחושת הביטחון והמסוגלות בתוך המעבר להורות.</p>
-            <p class="highlight-note">אורך התהליך יותאם לצורך העולה מכל אישה או זוג.</p>
-          </div>
         </div>
         <figure class="frame frame-hero reveal">
-          <img src="images/fineline.jpg" alt="איור בקו עדין של גבעולים ופרחים דקים בגווני ירוק וורוד, ובמרכזם שני גבעולים שיוצרים קו של בטן הריון ובתוכה ניצן קטן">
+          <img src="images/fineline.png" alt="איור בקו עדין של גבעולים ופרחים דקים בגווני ירוק וורוד, ובמרכזם שני גבעולים שיוצרים קו של בטן הריון ובתוכה ניצן קטן">
         </figure>
       </div>
+      <a href="#contact" class="scroll-hint" aria-label="גלילה לחלק הבא"><span></span></a>
+    </section>
+
+    <section class="panel bg-sage fit" id="for-whom">
+      <div class="container narrow">
+        <h2 class="reveal">למי זה מתאים</h2>
+        <p class="reveal">הליווי מתאים למי שרוצה להתכונן ללידה, לעבד חוויות ורגשות שנותרו אחריה, להתמודד עם אתגרי תקופת ההורות הראשונית ולתת מקום לשאלות, לחששות ולשינויים שמביאה איתה האימהות.</p>
+        <p class="reveal">במפגשים משולבים הקשבה רגישה, זיהוי כוחות ומשאבים ופיתוח דרכי התמודדות שיסייעו בחיזוק תחושת הביטחון והמסוגלות בתוך המעבר להורות.</p>
+        <p class="fit-note reveal">אורך התהליך יותאם לצורך העולה מכל אישה או זוג.</p>
+      </div>
+    </section>
+
+    <section class="panel about" id="about">
       <div class="container split about-row">
         <figure class="frame frame-portrait reveal">
-          <img src="images/profile.jpg" alt="הגר טלמון">
+          <img src="images/profile1.jpg" alt="הגר טלמון">
         </figure>
         <div class="reveal">
           <h2 class="about-sub">הרקע שלי</h2>
@@ -77,7 +85,6 @@
           <p class="about-details">הקליניקה ממוקמת ביד אליהו, תל אביב, או במפגשים בזום.</p>
         </div>
       </div>
-      <a href="#contact" class="scroll-hint" aria-label="גלילה לחלק הבא"><span></span></a>
     </section>
 
     <section class="panel bg-blush contact" id="contact">
@@ -87,7 +94,7 @@
           <h2>אשמח להכיר אותך</h2>
           <ul class="contact-list">
             <li><span>טלפון</span><a class="js-phone" dir="ltr" href="#contact">טלפון</a></li>
-            <li><span>אימייל</span><a href="mailto:hagar.stam@gmail.com">hagar.stam@gmail.com</a></li>
+            <li><span>אימייל</span><a href="mailto:hey@hagar-talmon.com">hey@hagar-talmon.com</a></li>
             <li>
               <span>וואטסאפ</span>
               <a class="wa-link js-whatsapp" href="#contact" target="_blank" rel="noopener">
@@ -101,8 +108,6 @@
 
         <form class="contact-form reveal" id="contactForm" action="#contact" method="POST" accept-charset="UTF-8" novalidate>
           <p class="form-title">השאירו פרטים ואחזור אליכם</p>
-          <input type="hidden" name="_subject" value="פנייה חדשה מהאתר">
-          <input type="hidden" name="_template" value="table">
           <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <label>
             שם

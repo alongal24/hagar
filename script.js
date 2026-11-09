@@ -7,6 +7,120 @@
   if (main) main.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
+  /* ---------- Smooth snap scrolling (desktop) ---------- */
+  (() => {
+    const root = document.documentElement;
+    if (root.classList.contains("page-doc")) return;
+
+    const desktop = window.matchMedia("(min-width: 961px)");
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const headerH = () => parseFloat(getComputedStyle(root).getPropertyValue("--header-h")) || 96;
+    const motionOff = () => reduced.matches || root.classList.contains("a11y-motion");
+    const active = () => desktop.matches && !motionOff();
+
+    const syncMode = () => root.classList.toggle("js-snap", active());
+    syncMode();
+    desktop.addEventListener("change", syncMode);
+    reduced.addEventListener("change", syncMode);
+    new MutationObserver(syncMode).observe(root, { attributes: true, attributeFilter: ["class"] });
+
+    const maxScroll = () => Math.max(0, root.scrollHeight - window.innerHeight);
+    const clamp = (y) => Math.min(Math.max(y, 0), maxScroll());
+
+    const points = () => {
+      const vh = window.innerHeight;
+      const h = headerH();
+      const pts = [];
+      document.querySelectorAll(".panel").forEach((sec) => {
+        const top = clamp(sec.offsetTop - h);
+        pts.push(top);
+        const bottom = clamp(sec.offsetTop + sec.offsetHeight - vh);
+        if (bottom - top > 24) pts.push(bottom);
+      });
+      pts.push(maxScroll());
+      const sorted = [...new Set(pts.map(Math.round))].sort((a, b) => a - b);
+      return sorted.filter((p, i) => i === 0 || p - sorted[i - 1] > 4);
+    };
+
+    let animating = false;
+    let lockUntil = 0;
+    const animateTo = (y) => {
+      const start = window.scrollY;
+      const dist = clamp(y) - start;
+      if (Math.abs(dist) < 1) return;
+      const dur = Math.min(900, Math.max(360, Math.abs(dist) * 0.5));
+      const t0 = performance.now();
+      const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+      animating = true;
+      const step = (now) => {
+        const t = Math.min(1, (now - t0) / dur);
+        window.scrollTo(0, start + dist * ease(t));
+        if (t < 1) {
+          requestAnimationFrame(step);
+        } else {
+          animating = false;
+          lockUntil = performance.now() + 140;
+        }
+      };
+      requestAnimationFrame(step);
+    };
+
+    const go = (dir) => {
+      const pts = points();
+      const y = window.scrollY;
+      const target = dir > 0 ? pts.find((p) => p > y + 4) : [...pts].reverse().find((p) => p < y - 4);
+      if (target == null) return false;
+      animateTo(target);
+      return true;
+    };
+
+    window.addEventListener("wheel", (e) => {
+      if (!active() || e.ctrlKey) return;
+      if (e.target.closest && e.target.closest(".a11y-panel, textarea")) return;
+      e.preventDefault();
+      if (animating || performance.now() < lockUntil) return;
+      go(Math.sign(e.deltaY));
+    }, { passive: false });
+
+    window.addEventListener("keydown", (e) => {
+      if (!active()) return;
+      const tag = (e.target.tagName || "").toLowerCase();
+      if (e.target.isContentEditable || tag === "input" || tag === "textarea" || tag === "select") return;
+      if (e.key === "PageDown" || e.key === "ArrowDown" || (e.key === " " && !e.shiftKey)) {
+        if (go(1)) e.preventDefault();
+      } else if (e.key === "PageUp" || e.key === "ArrowUp" || (e.key === " " && e.shiftKey)) {
+        if (go(-1)) e.preventDefault();
+      } else if (e.key === "Home") {
+        animateTo(0); e.preventDefault();
+      } else if (e.key === "End") {
+        animateTo(maxScroll()); e.preventDefault();
+      }
+    });
+
+    let touchY = null;
+    window.addEventListener("touchstart", (e) => {
+      touchY = active() ? e.touches[0].clientY : null;
+    }, { passive: true });
+    window.addEventListener("touchend", (e) => {
+      if (touchY == null) return;
+      const dy = touchY - e.changedTouches[0].clientY;
+      touchY = null;
+      if (Math.abs(dy) > 44 && !animating && performance.now() >= lockUntil) go(Math.sign(dy));
+    }, { passive: true });
+
+    document.querySelectorAll('a[href^="#"]').forEach((a) => {
+      if (a.classList.contains("js-phone") || a.classList.contains("js-whatsapp")) return;
+      a.addEventListener("click", (e) => {
+        if (!active()) return;
+        const id = a.getAttribute("href").slice(1);
+        const el = id && document.getElementById(id);
+        if (!el) return;
+        e.preventDefault();
+        animateTo(el.offsetTop - headerH());
+      });
+    });
+  })();
+
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {

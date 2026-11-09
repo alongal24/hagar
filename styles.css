@@ -708,6 +708,9 @@ html.a11y-cursor, html.a11y-cursor * {
   html:not(.page-doc) .site-footer { scroll-snap-align: end; }
 }
 
+/* When JS drives the smooth snap, keep native snap and smooth scroll out of its way. */
+html.js-snap { scroll-behavior: auto; scroll-snap-type: none !important; }
+
 @media (max-width: 1279px) {
   .frame-hero { padding: 0; width: calc(100% + 2rem); margin-left: -2rem; }
   .frame-hero::before { display: none; }
